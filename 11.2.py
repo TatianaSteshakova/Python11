@@ -24,12 +24,12 @@ def create():
     }
     print("Питомец занесен в словарь.")
 
-def read(n):
-    if n not in pets:
-        return print("Записи с данным ID не существует.")
-    name = str(list(pets[n].keys())[0])
+def read():
+    if 1 not in pets:
+        return print("В словаре нет питомцев.")
+    name = str(list(pets[1].keys())[0])
 
-    print("Это", pets[n][name]["Вид питомца"], "по кличке", name + ".", "Возраст питомца:", get_suffix(pets[n][name]["Возраст"]) + ".", "Имя владельца:", pets[n][name]["Имя владельца"])
+    print("Это", pets[1][name]["Вид питомца"], "по кличке", name + ".", "Возраст питомца:", get_suffix(pets[1][name]["Возраст"]) + ".", "Имя владельца:", pets[1][name]["Имя владельца"])
 
 def update(n):
     if n not in pets:
@@ -53,8 +53,12 @@ def update(n):
 def delete(n):
     if n not in pets:
         return print("Записи с данным ID не существует.")
-    del pets[n]
-    print("Запись удалена.")
+    if n == 1:
+        del pets
+        print("Словарь удален.")
+    else:
+        del pets[n]
+        print("Запись удалена.")
 
 def get_suffix(age):
     if age % 10 == 1 and age % 100 != 11:
